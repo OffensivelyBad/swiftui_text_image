@@ -26,13 +26,59 @@ struct ContentView: View {
     }()
     
     var body: some View {
+
+        /* --shape test
+        let colors = Gradient(colors: [.red, .yellow, .green, .blue, .purple])
+//        let conic = RadialGradient(gradient: colors, center: .center, startRadius: 50, endRadius: 200)
+        let conic = AngularGradient(gradient: colors, center: .center, startAngle: .zero, endAngle: .degrees(360))
+        return Circle()
+//            .fill(conic)
+            .strokeBorder(conic, lineWidth: 50)
+            .frame(width: 400, height: 400)
+ */
+        
+        VStack {
+            Spacer()
+            Text("this is cool")
+                .font(.largeTitle)
+                .background(Circle()
+                    .fill(Color.red)
+                    .frame(width: 100, height: 200)
+                    .clipped()
+            )
+            Text("this is cool")
+                .font(.largeTitle)
+                .background(
+                    Image(uiImage: img)
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                    )
+            Spacer()
+            Rectangle()
+                .fill(Color.red)
+                .frame(width: 200, height: 200)
+            Circle()
+                .fill(Color.blue)
+                .frame(width: 50, height: 50)
+                .padding(-10)
+        }
+        /*
         VStack {
             Text("ffisdf")
                 .font(.custom("AmericanTypeWriter", size: 30))
                 .tracking(50)
+                .padding()
+                .foregroundColor(.white)
+                .background(LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .top, endPoint: .bottom))
             Text("ffi")
                 .font(.custom("AmericanTypeWriter", size: 30))
                 .kerning(50)
+                .background(LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .leading, endPoint: .bottomTrailing))
+            let colors = Gradient(colors: [.red, .yellow, .green, .blue, .purple])
+            let conic = RadialGradient(gradient: colors, center: .center, startRadius: 50, endRadius: 200)
+            return Circle()
+                .fill(conic)
+                .frame(width: 400, height: 400)
             Text("This is a really long string and we'll see what happens when it gets truncated. This is a really long string and we'll see what happens when it gets truncated. This is a really long string and we'll see what happens when it gets truncated.")
                 .font(.caption)
                 .multilineTextAlignment(.center)
@@ -61,6 +107,7 @@ struct ContentView: View {
         .alert(isPresented: self.$showingAlert) {
             Alert(title: Text("test"))
         }
+     */
     }
 }
 
