@@ -37,9 +37,7 @@ struct ContentView: View {
                 .font(.caption)
                 .multilineTextAlignment(.center)
                 .onTapGesture {
-                    self.alert(isPresented: self.$showingAlert) {
-                        Alert(title: Text("test"))
-                    }
+                    self.showingAlert.toggle()
                 }
             Text("\nThis is a really long string and we'll see what happens when it gets truncated. This is a really long string and we'll see what happens when it gets truncated. This is a really long string and we'll see what happens when it gets truncated.")
                 .lineLimit(3)
@@ -54,6 +52,14 @@ struct ContentView: View {
                 .foregroundColor(.yellow)
                 .font(.largeTitle)
             Image(uiImage: img)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            Image(uiImage: img)
+                .resizable(capInsets: EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 20), resizingMode: .tile)
+
+        }
+        .alert(isPresented: self.$showingAlert) {
+            Alert(title: Text("test"))
         }
     }
 }
